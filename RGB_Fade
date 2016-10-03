@@ -2,7 +2,7 @@
 //Zamanla renk değiştiren RGB LED
 //Ledin 3 bacağı (kısa bacaklar) PWM sinyali verebilen arduino pinlerine bağlanır.
 //Ledin tipine göre (anot/katot) uzun bacak gnd/5v'a bağlanır.
-//tcanyasanul-3.10.2016
+//tcanyasanul-03.10.2016
 
 
 #define yesilpin 3  //RGB bacaklarının pin atamaları
