@@ -1,0 +1,47 @@
+// Basit_DHT11
+// DHT11 sıcaklık ve nem sensörü için basit bir örnek.
+// DHT11 kütüphanesine http://arduinoturkiye.com/wp-content/uploads/dht11.rar adresinden ulaşılabilir.
+// Ön yüzeyindeki en sol (1. pin) 5V, 2. pin 3, 3. ve 4. pinler GNDye bağlanır.
+// tcyasanul-03.10.2016
+
+#include <dht11.h> // dht11 kütüphanesini ekler.
+#define DHT11PIN 2 // DHT11PIN olarak 2. pini belirler.
+
+dht11 DHT11;
+
+void setup()
+{
+  Serial.begin(9600); // Seri iletişimi başlatır.
+  Serial.println("Basit DHT11");
+}
+
+void loop()
+{
+  // Serial monitörde bir satır boşluk bırakıyoruz.
+  Serial.println("\n");
+  // Sensörün okunup okunmadığını konrol ediyoruz. 
+  // chk 0 ise sorunsuz okunuyor demektir. Sorun yaşarsanız
+  // chk değerini serial monitörde yazdırıp kontrol edebiliriz.
+  int chk = DHT11.read(DHT11PIN);
+  
+  // Sensörden gelen verileri serial monitörde yazdırıyoruz.
+  Serial.print("Nem (%): ");
+  Serial.println((float)DHT11.humidity, 2);
+
+  Serial.print("Sicaklik (Celcius): ");
+  Serial.println((float)DHT11.temperature, 2);
+
+  Serial.print("Sicaklik (Fahrenheit): ");
+  Serial.println(DHT11.fahrenheit(), 2);
+
+  Serial.print("Sicaklik (Kelvin): ");
+  Serial.println(DHT11.kelvin(), 2);
+
+  // Çiğ Oluşma Noktası, Dew Point
+  Serial.print("Cig Olusma Noktasi: ");
+  Serial.println(DHT11.dewPoint(), 2);
+  
+  // 2 saniye bekliyoruz. 2 saniyede bir veriler ekrana yazdırılacak.
+  delay(2000);
+  
+}
