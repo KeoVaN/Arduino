@@ -1,0 +1,66 @@
+const int mavi = 3;
+const int yesil = 5;
+const int kirmizi = 6;
+String readString;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(kirmizi, OUTPUT); 
+  pinMode(mavi, OUTPUT); 
+  pinMode(yesil, OUTPUT); 
+}
+
+void loop() {
+  while (Serial.available()) {
+    delay(3);  
+    char c = Serial.read();
+    readString += c; 
+  }
+  if (readString.length() >0) {
+    Serial.println(readString);
+    
+    if (readString == "mavi")     
+    {
+      analogWrite(kirmizi, 0);
+      analogWrite(yesil, 0);
+      analogWrite(mavi, 255);
+    }
+        if (readString == "kirmizi")     
+    {
+      analogWrite(kirmizi, 255);
+      analogWrite(yesil, 0);
+      analogWrite(mavi, 0);
+    }
+        if (readString == "yesil")     
+    {
+      analogWrite(kirmizi, 0);
+      analogWrite(yesil, 255);
+      analogWrite(mavi, 0);
+    }
+        if (readString == "beyaz")     
+    {
+      analogWrite(kirmizi, 255);
+      analogWrite(yesil, 255);
+      analogWrite(mavi, 255);
+    }
+        if (readString == "mor")     
+    {
+      analogWrite(kirmizi, 155);
+      analogWrite(yesil, 0);
+      analogWrite(mavi, 155);
+    }
+        if (readString == "sari")     
+    {
+      analogWrite(kirmizi, 255);
+      analogWrite(yesil, 255);
+      analogWrite(mavi, 0);
+    }
+         if (readString == "cyan")     
+    {
+      analogWrite(kirmizi, 0);
+      analogWrite(yesil, 255);
+      analogWrite(mavi, 255);
+    }
+    readString="";
+  } 
+}
