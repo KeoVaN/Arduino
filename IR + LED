@@ -1,0 +1,29 @@
+
+#include <IRremote.h>
+
+IRrecv irrecv(11); //IR signal pin 11e atandı
+
+decode_results results;
+
+
+
+
+void setup() {
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  Serial.println("IR Devrede");
+  pinMode(3, OUTPUT);
+  digitalWrite(3, LOW);}
+
+
+void loop() {
+  if (irrecv.decode(&results)) {
+    Serial.println(results.value);
+
+    if(results.value == 2164 || results.value == 116 ) { //mavi buton 2164 ve 116 okunuyor
+      digitalWrite(3, !digitalRead(3));                  // || operatörü VEYA manasına geliyor
+      delay(100);}                                       // && operatörü VE manasına geliyor
+
+    irrecv.resume();}
+
+  delay(100);}
