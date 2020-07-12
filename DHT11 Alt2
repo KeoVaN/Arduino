@@ -1,4 +1,4 @@
-// Basit_DHT11
+// Kütüphane içindeki example.
 // DHT11 sıcaklık ve nem sensörü için basit bir örnek.
 // DHT11 kütüphanesine http://arduinoturkiye.com/wp-content/uploads/dht11.rar adresinden ulaşılabilir.
 // Ön yüzeyindeki en sol (1. pin) 5V, 2. pin 3, 3. ve 4. pinler GNDye bağlanır.
