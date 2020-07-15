@@ -1,8 +1,7 @@
-//4 pinli BME 280 grove sensörleri için
-//VIN 5V. SCL A5e, SDA A4e bağlanmalı. 
-//12.07.2020
+//4 pinli BME 280 grove sensörleri için; VIN 5V. SCL A5e, SDA A4e bağlanmalı. 
+//tcyasanul 12.07.2020
 
-#include "Seeed_BME280.h"
+#include "Seeed_BME280.h"   //Groove
 #include <Wire.h>
 
 BME280 bme280;
