@@ -1,5 +1,6 @@
-//12.07.2020. kütüphane içindeki example
+
 //Soldan 1. pin data, 2. VIN 5V, 3. ve 4 GND.
+//tcyasanul 12.07.2020
 
 #include "DHT.h" //kütüphanesi lazım
 
