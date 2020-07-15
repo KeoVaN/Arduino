@@ -1,0 +1,72 @@
+
+//https://tcanelectronics.blogspot.com/2015/09/bluetooth-ve-arduino.html
+//https://www.youtube.com/watch?v=QWqMYOVAqkg
+//tcyasanul 28.07.2015
+
+
+
+#include <SoftwareSerial.h>
+SoftwareSerial BT(10, 11); //bt giriş
+String voice;
+
+void setup() {
+  BT.begin(9600);
+  Serial.begin(9600);
+
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+}
+
+void loop() {
+  while (BT.available()) {
+    delay(1);
+    char c = BT.read();
+    if (c == '#') {
+      break;
+    }
+    voice += c;
+  }
+  if (voice.length() > 0) {
+    Serial.println(voice);
+    if (voice == "*beyaz aç")
+    {
+      digitalWrite(13, HIGH);
+      digitalWrite(12, LOW);
+      delay(1);
+    }
+    if (voice == "*beyaz kapat")
+    {
+      digitalWrite(13, LOW);
+      delay(1);
+    }
+        if (voice == "*mavi aç")
+    {
+      digitalWrite(12, HIGH);
+      digitalWrite(13, LOW);
+      delay(1);
+    }
+        if (voice == "*mavi kapat")
+    {
+      digitalWrite(12, LOW);
+      delay(1);
+    }
+ 
+         if (voice == "*hepsini aç")
+    {
+      digitalWrite(12, HIGH);
+      digitalWrite(13, HIGH);
+      delay(1);
+    }
+ 
+             if (voice == "*hepsini kapat")
+    {
+      digitalWrite(12, LOW);
+      digitalWrite(13, LOW);
+      delay(1);
+    }
+
+
+
+    voice = "";
+  }
+}
