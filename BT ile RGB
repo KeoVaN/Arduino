@@ -3,7 +3,7 @@
 //BT Rx>Arduino Tx, BT Tx> Arduino Rx.
 //Ledin 3 bacağı (kısa bacaklar) PWM sinyali verebilen arduino pinlerine bağlanır.
 //Ledin tipine göre (anot/katot) uzun bacak gnd/5v'a bağlanır.
-//tcanyasanul-20.10.2016
+//tcyasanul 20.10.2016
 
 
 const int mavi = 3;
