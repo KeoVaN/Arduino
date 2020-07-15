@@ -1,4 +1,7 @@
-                        //06.2020
+//Arduino ve ws2812b ile kurulan Ambilight. ws2812b adalight (?) gibi çalışır
+//tcyasanul 21.06.2020
+
+
 #include "FastLED.h"    //FastLED kütüphanesi lazım
 #define NUM_LEDS 49     //Bendeki mevcut LED sayısı
 #define DATA_PIN 6      //Arduino data çıkışı
