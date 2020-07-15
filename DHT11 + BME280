@@ -1,0 +1,52 @@
+//BME280 ve DHT11 Sıcaklık Sensörlerini beraber kullanma
+//tcyasanul 12.07.2020
+
+//4 pinli BME 280 grove sensörleri için; VIN 5V, SCL A5e, SDA A4e bağlanmalı.
+//DHT11'in yüzeyindeki; 1. pin(en sol) 5V, 2. pin 2, 3. ve 4. pinler GNDye bağlanır.
+
+#include "DHT.h"
+#include "Seeed_BME280.h"
+#include <Wire.h>
+
+#define DHTPIN 2        //DHT pini nereye bağlı?
+#define DHTTYPE DHT11   //Hangi tip DHT?     
+
+BME280 bme280;
+
+int delayvalue = 2000;  //güncelleme hızı
+
+
+DHT dht(DHTPIN, DHTTYPE);
+
+
+void setup() {
+    Serial.begin(9600);
+    Serial.println(F("DHTxx test!"));
+    if(!bme280.init()){
+        Serial.println("BME280 Cihaz hatası!");
+    }
+    
+    dht.begin();
+}
+
+void loop() {
+    float t = dht.readTemperature();
+
+    if (isnan(t)) {
+        Serial.println(F("DHT sensör arızası"));
+        return;
+    }
+  
+    Serial.print("BME280 Temp: ");
+    Serial.print(bme280.getTemperature());
+    Serial.println("C");
+
+    Serial.print(F("DHT11 Temperature: "));
+    Serial.print(t);
+    Serial.println(F("°C "));
+
+    Serial.println("");
+
+    delay(delayvalue);
+
+}
